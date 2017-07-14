@@ -72,5 +72,11 @@ module.exports = {
       { value: true, deprecated: "0.19.0", redirect: "es5" },
       { value: false, deprecated: "0.19.0", redirect: "none" }
     ]
+  },
+  preserveObjectKeyQuotes: {
+    type: "boolean",
+    category: CATEGORY_JAVASCRIPT,
+    default: false,
+    description: "Preserve object property accesses using string keys"
   }
 };
