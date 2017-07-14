@@ -537,8 +537,9 @@ function printJsxOpeningElement(path, options, print) {
     (node.typeParameters && hasComment(node.typeParameters));
 
   // Don't break self-closing elements with no attributes and no comments
+  const space = options.jsxBracketSameLine ? "" : " ";
   if (node.selfClosing && node.attributes.length === 0 && !nameHasComments) {
-    return ["<", print("name"), print("typeParameters"), " />"];
+    return ["<", print("name"), print("typeParameters"), space + "/>"];
   }
 
   // don't break up opening elements with a single long text attribute
@@ -566,7 +567,7 @@ function printJsxOpeningElement(path, options, print) {
       print("typeParameters"),
       " ",
       ...path.map(print, "attributes"),
-      node.selfClosing ? " />" : ">",
+      node.selfClosing ? space + "/>" : ">",
     ]);
   }
 
@@ -608,8 +609,8 @@ function printJsxOpeningElement(path, options, print) {
       print("name"),
       print("typeParameters"),
       indent(path.map(() => [line, print()], "attributes")),
-      node.selfClosing ? line : bracketSameLine ? ">" : softline,
-      node.selfClosing ? "/>" : bracketSameLine ? "" : ">",
+      bracketSameLine ? (node.selfClosing ? "/>" : ">") : softline,
+      bracketSameLine ? "" : node.selfClosing ? "/>" : ">",
     ],
     { shouldBreak }
   );
