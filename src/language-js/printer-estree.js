@@ -3655,6 +3655,7 @@ function printPropertyKey(path, options, print) {
   }
 
   if (
+    !options.preserveObjectKeyQuotes &&
     isStringLiteral(key) &&
     isIdentifierName(key.value) &&
     !node.computed &&
