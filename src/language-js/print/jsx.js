@@ -551,12 +551,13 @@ function printJsxOpeningElement(path, options, print) {
       n.typeParameters.comments.length > 0);
 
   // Don't break self-closing elements with no attributes and no comments
+  const space = options.jsxBracketSameLine ? "" : " ";
   if (n.selfClosing && !n.attributes.length && !nameHasComments) {
     return concat([
       "<",
       path.call(print, "name"),
       path.call(print, "typeParameters"),
-      " />",
+      space + "/>",
     ]);
   }
 
@@ -586,7 +587,7 @@ function printJsxOpeningElement(path, options, print) {
         path.call(print, "typeParameters"),
         " ",
         concat(path.map(print, "attributes")),
-        n.selfClosing ? " />" : ">",
+        n.selfClosing ? space + "/>" : ">",
       ])
     );
   }
@@ -629,9 +630,9 @@ function printJsxOpeningElement(path, options, print) {
         indent(
           concat(path.map((attr) => concat([line, print(attr)]), "attributes"))
         ),
-        n.selfClosing ? line : bracketSameLine ? ">" : softline,
+        bracketSameLine ? (n.selfClosing ? "/>" : ">") : softline,
       ]),
-      n.selfClosing ? "/>" : bracketSameLine ? "" : ">",
+      bracketSameLine ? "" : n.selfClosing ? "/>" : ">",
     ]),
     { shouldBreak }
   );
