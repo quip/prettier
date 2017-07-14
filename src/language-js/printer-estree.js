@@ -2240,12 +2240,13 @@ function printPathNoParens(path, options, print, args) {
           n.typeParameters.comments.length > 0);
 
       // Don't break self-closing elements with no attributes and no comments
+      const space = options.jsxBracketSameLine ? "" : " ";
       if (n.selfClosing && !n.attributes.length && !nameHasComments) {
         return concat([
           "<",
           path.call(print, "name"),
           path.call(print, "typeParameters"),
-          " />",
+          space + "/>",
         ]);
       }
 
@@ -2275,7 +2276,7 @@ function printPathNoParens(path, options, print, args) {
             path.call(print, "typeParameters"),
             " ",
             concat(path.map(print, "attributes")),
-            n.selfClosing ? " />" : ">",
+            n.selfClosing ? space + "/>" : ">",
           ])
         );
       }
@@ -2320,9 +2321,9 @@ function printPathNoParens(path, options, print, args) {
                 path.map((attr) => concat([line, print(attr)]), "attributes")
               )
             ),
-            n.selfClosing ? line : bracketSameLine ? ">" : softline,
+            bracketSameLine ? (n.selfClosing ? "/>" : ">") : softline,
           ]),
-          n.selfClosing ? "/>" : bracketSameLine ? "" : ">",
+          bracketSameLine ? "" : n.selfClosing ? "/>" : ">",
         ]),
         { shouldBreak }
       );
