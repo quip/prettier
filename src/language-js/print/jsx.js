@@ -695,7 +695,7 @@ function printJsxElement(path, options, print) {
     printJsxElementInternal(path, options, print),
     options
   );
-  return maybeWrapJsxElementInParens(path, elem, options);
+  return elem;
 }
 
 function printJsxEmptyExpression(path, options /*, print*/) {
