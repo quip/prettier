@@ -1900,7 +1900,7 @@ function printPathNoParens(path, options, print, args) {
         () => printJSXElement(path, options, print),
         options
       );
-      return maybeWrapJSXElementInParens(path, elem);
+      return elem;
     }
     case "JSXOpeningElement": {
       const n = path.getValue();
