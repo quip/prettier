@@ -99,4 +99,10 @@ module.exports = {
     ],
   },
   singleAttributePerLine: commonOptions.singleAttributePerLine,
+  parensSameLine: {
+    type: "boolean",
+    category: CATEGORY_JAVASCRIPT,
+    default: false,
+    description: "Put ) on the last line instead of at a new line."
+  }
 };
