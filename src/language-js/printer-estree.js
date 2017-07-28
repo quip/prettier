@@ -1786,14 +1786,14 @@ function printPathNoParens(path, options, print, args) {
       );
     case "IfStatement": {
       const con = adjustClause(n.consequent, path.call(print, "consequent"));
+      const test = path.call(print, "test");
       const opening = group(
         concat([
           "if (",
           group(
-            concat([
-              indent(concat([softline, path.call(print, "test")])),
-              softline
-            ])
+            options.parensSameLine
+              ? indent(test)
+              : concat([indent(concat([softline, test])), softline])
           ),
           ")",
           con
@@ -4058,7 +4058,7 @@ function printArgumentsList(path, options, print) {
         "(",
         indent(concat([line, concat(printedArguments)])),
         maybeTrailingComma,
-        line,
+        options.parensSameLine ? "" : line,
         ")"
       ]),
       { shouldBreak: true }
@@ -4140,7 +4140,7 @@ function printArgumentsList(path, options, print) {
     "(",
     indent(concat([softline, concat(printedArguments)])),
     ifBreak(maybeTrailingComma),
-    softline,
+    options.parensSameLine ? "" : softline,
     ")"
   ]);
   if (isLongCurriedCallExpression(path)) {
