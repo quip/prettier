@@ -71,5 +71,11 @@ module.exports = {
     category: CATEGORY_JAVASCRIPT,
     default: false,
     description: "Preserve object property accesses using string keys"
+  },
+  parensSameLine: {
+    type: "boolean",
+    category: CATEGORY_JAVASCRIPT,
+    default: false,
+    description: "Put ) on the last line instead of at a new line."
   }
 };
