@@ -372,9 +372,10 @@ function printEstree(path, options, print, args) {
       ]);
     case "IfStatement": {
       const con = adjustClause(node.consequent, print("consequent"));
+      const test = print("test");
       const opening = group([
         "if (",
-        group([indent([softline, print("test")]), softline]),
+        group(options.parensSameLine ? indent(test) : [indent([softline, test]), softline]),
         ")",
         con,
       ]);
