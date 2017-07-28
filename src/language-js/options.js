@@ -94,5 +94,11 @@ module.exports = {
       { value: true, deprecated: "0.19.0", redirect: "es5" },
       { value: false, deprecated: "0.19.0", redirect: "none" }
     ]
+  },
+  parensSameLine: {
+    type: "boolean",
+    category: CATEGORY_JAVASCRIPT,
+    default: false,
+    description: "Put ) on the last line instead of at a new line."
   }
 };
