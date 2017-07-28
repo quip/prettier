@@ -766,14 +766,14 @@ function printPathNoParens(path, options, print, args) {
       );
     case "IfStatement": {
       const con = adjustClause(n.consequent, path.call(print, "consequent"));
+      const test = path.call(print, "test");
       const opening = group(
         concat([
           "if (",
           group(
-            concat([
-              indent(concat([softline, path.call(print, "test")])),
-              softline,
-            ])
+            options.parensSameLine
+              ? indent(test)
+              : concat([indent(concat([softline, test])), softline])
           ),
           ")",
           con,

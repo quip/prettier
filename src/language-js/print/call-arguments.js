@@ -135,7 +135,7 @@ function printCallArguments(path, options, print) {
         "(",
         indent(concat([line, concat(printedArguments)])),
         maybeTrailingComma,
-        line,
+        options.parensSameLine ? "" : line,
         ")",
       ]),
       { shouldBreak: true }
@@ -218,7 +218,7 @@ function printCallArguments(path, options, print) {
     "(",
     indent(concat([softline, concat(printedArguments)])),
     ifBreak(maybeTrailingComma),
-    softline,
+    options.parensSameLine ? "" : softline,
     ")",
   ]);
   if (isLongCurriedCallExpression(path)) {
