@@ -28,4 +28,54 @@ elements.client.editor.PlatformDocument.prototype.save = function(
       var slashShortcutDesc = new shortcuts.Desc(
           events.KeyCode.FORWARD_SLASH, shortcuts.Modifier.NONE);
 
+
+    const imageData = editor.image.getDisplayImageDataInContainer(
+    displayScale * options.contentScale,
+    pb,
+    /** @type {{height: number, width: number}} */ (containerSize));
 }
+
+flat.components.FavoriteButton = React.createClass({
+    mixins: [parts.mixins.ModelPropertyListener, parts.mixins.PureRenderMixin],
+    propTypes: {
+        thread: React.PropTypes.instanceOf(model.Thread).isRequired,
+    },
+    /**
+     * @param {Event} e
+     * @private
+     */
+    toggleStar_(e) {
+        events.stopPropagation(e);
+        e.preventDefault();
+        const {thread} = this.props;
+        if (thread.starredState().get()) {
+            thread.unstar();
+        } else {
+            thread.star();
+        }
+    },
+    render() {
+        const {thread} = this.props;
+        if (model.User.currentUser()) {
+            const starred = thread.starredState().get();
+            const icon = starred ? (
+                <parts.icons.Starred />
+            ) : (
+                <parts.icons.Star />
+            );
+            return <parts.Tooltip
+                text={starred ? _$("Favorited") : _$("Add to Favorites")}>
+                <parts.Button
+                    icon={icon}
+                    selected={starred}
+                    onClick={this.toggleStar_}/>
+            </parts.Tooltip>;
+        } else {
+            return <div />;
+        }
+    },
+
+    modelPropertiesForProps(props) {
+        return [props.thread.starredState()];
+    },
+});
