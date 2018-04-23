@@ -1,2 +1,9 @@
-run_spec(__dirname, { tabWidth: 4 });
-run_spec(__dirname, { tabWidth: 4, parensSameLine: true });
+run_spec(__dirname, ["typescript"], {
+  tabWidth: 4,
+  jsxBracketSameLine: true,
+  trailingComma: "es5",
+  bracketSpacing: false,
+  quoteProps: "preserve",
+  arrowParens: "avoid",
+  parensSameLine: true
+});
