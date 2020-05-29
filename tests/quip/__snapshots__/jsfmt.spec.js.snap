@@ -299,8 +299,8 @@ export class ModelContact extends SyncerContact {
         objId: string,
         callback?: (arg0: ModelContact) => any
     ): Promise<ModelContact | null> {
-        return new Promise(resolve => {
-            fn(objId, contactId => {
+        return new Promise((resolve) => {
+            fn(objId, (contactId) => {
                 const result = contactId ? ModelContact.get(contactId) : null;
                 if (callback) {
                     callback(result);
