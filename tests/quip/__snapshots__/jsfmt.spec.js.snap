@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`quip-style.tsx - {"tabWidth":4,"jsxBracketSameLine":true,"trailingComma":"es5","bracketSpacing":false,"quoteProps":"preserve","arrowParens":"avoid","parensSameLine":true} format 1`] = `
+exports[`quip-style.tsx - {"tabWidth":4,"bracketSameLine":true,"trailingComma":"es5","bracketSpacing":false,"quoteProps":"preserve","arrowParens":"avoid","parensSameLine":true} format 1`] = `
 ====================================options=====================================
 arrowParens: "avoid"
+bracketSameLine: true
 bracketSpacing: false
-jsxBracketSameLine: true
 parensSameLine: true
 parsers: ["typescript"]
 printWidth: 80
@@ -337,8 +337,7 @@ export class FocusButton
     implements
         MixedIn<PureRenderMixin>,
         MixedIn<IsMountedMixin>,
-        MixedIn<ListenerMixin>
-{
+        MixedIn<ListenerMixin> {
     private dimTimeout_: number | null = null;
     private mouseMoveListenable_: EventListenable<(arg0: Event) => any>;
 

@@ -95,7 +95,7 @@ function printClass(path, options, print) {
 const getHeritageGroupId = createGroupIdMapper("heritageGroup");
 
 function printHardlineAfterHeritage(node) {
-  return ifBreak(hardline, "", { groupId: getHeritageGroupId(node) });
+  return "";
 }
 
 function hasMultipleHeritage(node) {
