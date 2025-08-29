@@ -541,7 +541,7 @@ function printJsxOpeningElement(path, options, print) {
     (node.typeParameters && hasComment(node.typeParameters));
 
   // Don't break self-closing elements with no attributes and no comments
-  const space = options.jsxBracketSameLine ? "" : " ";
+  const space = options.bracketSameLine ? "" : " ";
   if (node.selfClosing && node.attributes.length === 0 && !nameHasComments) {
     return ["<", print("name"), print("typeParameters"), space + "/>"];
   }
