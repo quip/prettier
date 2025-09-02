@@ -100,6 +100,10 @@ function printClass(path, options, print) {
 const getHeritageGroupId = createGroupIdMapper("heritageGroup");
 
 function printHardlineAfterHeritage(node) {
+  return ifBreak(hardline, "", { groupId: getHeritageGroupId(node) });
+}
+
+function printHardlineAfterHeritageForClassBody(node) {
   return "";
 }
 
@@ -239,4 +243,5 @@ module.exports = {
   printClassMethod,
   printClassProperty,
   printHardlineAfterHeritage,
+  printHardlineAfterHeritageForClassBody,
 };

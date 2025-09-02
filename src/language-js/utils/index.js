@@ -1273,6 +1273,7 @@ function isObjectProperty(node) {
   return (
     node &&
     (node.type === "ObjectProperty" ||
+      node.type === "TSPropertySignature" ||
       (node.type === "Property" && !node.method && node.kind === "init"))
   );
 }

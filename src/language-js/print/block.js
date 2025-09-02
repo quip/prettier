@@ -10,7 +10,7 @@ const {
   CommentCheckFlags,
   isNextLineEmpty,
 } = require("../utils/index.js");
-const { printHardlineAfterHeritage } = require("./class.js");
+const { printHardlineAfterHeritageForClassBody } = require("./class.js");
 
 const { printBody } = require("./statement.js");
 
@@ -26,7 +26,7 @@ function printBlock(path, options, print) {
 
   if (node.type === "ClassBody" && isNonEmptyArray(node.body)) {
     const parent = path.getParentNode();
-    parts.push(printHardlineAfterHeritage(parent));
+    parts.push(printHardlineAfterHeritageForClassBody(parent));
   }
 
   parts.push("{");
