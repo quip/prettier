@@ -1,6 +1,6 @@
 run_spec(__dirname, ["typescript"], {
   tabWidth: 4,
-  bracketSameLine: true,
+  jsxBracketSameLine: true,
   trailingComma: "es5",
   bracketSpacing: false,
   quoteProps: "preserve",

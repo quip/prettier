@@ -170,7 +170,7 @@ function printCallArguments(path, options, print) {
     "(",
     indent([softline, ...printedArguments]),
     ifBreak(maybeTrailingComma),
-    options.parensSameLine ? "" : softline,
+    softline,
     ")",
   ];
   if (isLongCurriedCallExpression(path)) {
