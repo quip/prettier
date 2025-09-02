@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`quip-style.tsx 1`] = `
+exports[`quip-style.tsx - {"tabWidth":4,"bracketSameLine":true,"trailingComma":"es5","bracketSpacing":false,"quoteProps":"preserve","parensSameLine":true} format 1`] = `
 ====================================options=====================================
+bracketSameLine: true
 bracketSpacing: false
-jsxBracketSameLine: true
 parensSameLine: true
 parsers: ["typescript"]
 printWidth: 80
@@ -238,13 +238,13 @@ export class ModelContact extends SyncerContact {
 
     user(): ModelUser {
         return this.hasUserId()
-            ? ModelUser.get((this.getUserId() as unknown) as string)
+            ? ModelUser.get(this.getUserId() as unknown as string)
             : null;
     }
 
     thread(): ModelThread {
         return this.getThreadId()
-            ? ModelThread.get((this.getThreadId() as unknown) as string)
+            ? ModelThread.get(this.getThreadId() as unknown as string)
             : null;
     }
 
@@ -260,25 +260,20 @@ export class ModelContact extends SyncerContact {
 
     static get = objectClass.getterFn(ModelContact);
 
-    static allContacts: () => ModelContactIndex = ModelIndex.newSimpleIndexGetter(
-        "Contact/affinity",
-        ModelContact);
+    static allContacts: () => ModelContactIndex =
+        ModelIndex.newSimpleIndexGetter("Contact/affinity", ModelContact);
 
-    static recentContacts: () => ModelContactIndex = ModelIndex.newSimpleIndexGetter(
-        "Contact/recent",
-        ModelContact);
+    static recentContacts: () => ModelContactIndex =
+        ModelIndex.newSimpleIndexGetter("Contact/recent", ModelContact);
 
-    static siteContacts: () => ModelContactIndex = ModelIndex.newSimpleIndexGetter(
-        "Contact/site",
-        ModelContact);
+    static siteContacts: () => ModelContactIndex =
+        ModelIndex.newSimpleIndexGetter("Contact/site", ModelContact);
 
-    static sharingContacts: () => ModelContactIndex = ModelIndex.newSimpleIndexGetter(
-        "Contact/sharing",
-        ModelContact);
+    static sharingContacts: () => ModelContactIndex =
+        ModelIndex.newSimpleIndexGetter("Contact/sharing", ModelContact);
 
-    static siteInviteContacts: () => ModelContactIndex = ModelIndex.newSimpleIndexGetter(
-        "Contact/siteInvite",
-        ModelContact);
+    static siteInviteContacts: () => ModelContactIndex =
+        ModelIndex.newSimpleIndexGetter("Contact/siteInvite", ModelContact);
 
     static relevantContacts(): ModelContactIndex {
         if (ModelUser.currentUser().company()) {
@@ -299,8 +294,8 @@ export class ModelContact extends SyncerContact {
         objId: string,
         callback?: (arg0: ModelContact) => any
     ): Promise<ModelContact | null> {
-        return new Promise(resolve => {
-            fn(objId, contactId => {
+        return new Promise((resolve) => {
+            fn(objId, (contactId) => {
                 const result = contactId ? ModelContact.get(contactId) : null;
                 if (callback) {
                     callback(result);
