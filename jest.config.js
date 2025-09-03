@@ -64,6 +64,7 @@ const config = {
     "<rootDir>/tests/integration/__tests__/**/*.js",
     "<rootDir>/tests/unit/**/*.js",
     "<rootDir>/tests/dts/unit/**/*.js",
+    "<rootDir>/tests/quip/**/*.js",
   ],
   testPathIgnorePatterns,
   // collectCoverage: ENABLE_CODE_COVERAGE,

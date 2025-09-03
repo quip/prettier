@@ -1,6 +1,6 @@
-run_spec(__dirname, ["typescript"], {
+run_spec(import.meta, ["typescript"], {
   tabWidth: 4,
-  jsxBracketSameLine: true,
+  bracketSameLine: true,
   trailingComma: "es5",
   bracketSpacing: false,
   quoteProps: "preserve",
